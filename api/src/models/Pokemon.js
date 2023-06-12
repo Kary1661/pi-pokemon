@@ -8,6 +8,7 @@ module.exports = (sequelize) => {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
@@ -31,15 +32,17 @@ module.exports = (sequelize) => {
     },
     speed: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     height: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     weight: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
+    }, {
+     timestamps: false
   });
 };
