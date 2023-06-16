@@ -1,12 +1,18 @@
 import './App.css';
-import ContainerCards from './components/ContainerCards/ContainerCards';
-import { useEffect, useState } from 'react';
-import NavBar from './components/NavBar/NavBar';
+import {Home, Landing, CreateForm, NotFound, Detail} from './Pages'
+import { Route, Switch } from "react-router-dom";
 
-function App() {
+
+const App = () => {
   return (
     <div className="App">
-      <h1>Henry Pokemon</h1>
+      <Switch>
+        <Route exact path='/'><Landing/></Route>
+        <Route exact path='/home'><Home/></Route>
+        <Route exact path='/create'><CreateForm/></Route>
+        <Route exact path='/pokemon/:id'><Detail/></Route>
+        <Route path='*'><NotFound/></Route>
+      </Switch>
     </div>
   );
 }
