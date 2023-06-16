@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import style from "./NavBar.module.css";
 import SearchBar from "../Search/SearchBar";
-import pokeLogo from "../assets/pokeLogo.png"
+import pokeLogo from "../../assets/pokeLogo.png"
 
 const NavBar = () => {
     return(
