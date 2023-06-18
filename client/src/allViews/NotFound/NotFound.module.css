@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.notFound{
+    max-width: 100%;
+    border-radius: 20px;
+    margin: 50px 50px;
+    overflow: hidden;
+    background-color: #f8f8f88f;
+    box-shadow: 0px 0px 10px #333333;
+    padding: 50px;
+    min-width: 300px;
+
+}
+.img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
