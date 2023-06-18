@@ -58,4 +58,4 @@ const validate = (form) => {
     return errors;
 };
 
-export default { validate };
+export default validate;

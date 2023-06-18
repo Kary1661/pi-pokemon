@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { validate } from "./validate";
-import { getAllTypes } from "../../redux/actions/actions";
+import validate from "./validate";
+import { getAllTypes } from "../../Redux/actions/actions";
 import {NavLink} from "react-router-dom";
 
 const CreateForm = () => {
