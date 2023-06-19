@@ -7,11 +7,11 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route exact path='/'><Landing/></Route>
-        <Route exact path='/home'><Home/></Route>
-        <Route exact path='/create'><Form/></Route>
-        <Route exact path='/pokemon/:id'><Detail/></Route>
-        <Route path='*'><NotFound/></Route>
+        <Route path='/' element={<Landing/>} />
+        <Route path='/home' element={<Home/>} />
+        <Route path='/create' element={<Form/>} />
+        <Route exact path='/pokemon/:id' element={<Detail/>} />
+        <Route path='*' element={<NotFound/>} />
       </Routes>
     </div>
   );
