@@ -1,4 +1,4 @@
-import { getPokemonByName } from "../../redux/actions/actions";
+import { getPokemonByName } from "../../Redux/allActions/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 

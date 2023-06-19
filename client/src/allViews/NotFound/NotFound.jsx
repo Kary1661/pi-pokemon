@@ -1,6 +1,6 @@
 import style from '../NotFound/NotFound.module.css';
 import {NavLink} from 'react-router-dom';
-import bigpikachu from '../../assets/NotFound.jpg';
+import bigpikachu from '../../assets/bigpikachu.jpg';
 
 const NotFound = () => {
     return(
