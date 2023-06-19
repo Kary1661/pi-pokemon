@@ -3,7 +3,6 @@ import NavBar from '../../components/NavBar/NavBar';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import getAllPokemons from '../../Redux/actions';
-import '../Home/Home.module.css';
 
 const Home = () => {
 
@@ -14,7 +13,7 @@ const Home = () => {
     }, [dispatch]);
 
     return (
-        <div className={style.home}>
+        <div>
             <NavBar />
             <ContainerCards />
         </div>

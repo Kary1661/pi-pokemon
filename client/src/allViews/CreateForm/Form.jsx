@@ -80,7 +80,7 @@ const Form = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/pokemons", form)
+            const response = await axios.post("/pokemons", Form)
             alert("Pokemon created successfuly ")
             return response
         } catch (error) {
