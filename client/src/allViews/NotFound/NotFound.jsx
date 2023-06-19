@@ -1,6 +1,6 @@
-import style from './NotFound.module.css';
+import style from '../NotFound/NotFound.module.css';
 import {NavLink} from 'react-router-dom';
-import img from '';
+import bigpikachu from '../../assets/NotFound.jpg';
 
 const NotFound = () => {
     return(
@@ -8,8 +8,8 @@ const NotFound = () => {
             <div className={style.notFound}>
                 <h1>404</h1>
                 <p>Page not found</p>
-                <img src={img}
-                alt="Error"
+                <img src={bigpikachu}
+                alt="not found"
                 className={style.img}
                 />
                 <NavLink to='/home'><button>Go home</button></NavLink>

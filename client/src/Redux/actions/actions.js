@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CLEAR_ORDER, CLEAR_DETAIL, FILTER_ALL, GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, ORDER_BY_NAME, ORDER_BY_ATTACK } from "./actionTypes";
+import { CLEAR_ORDER, CLEAR_DETAIL, FILTER_ALL, GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, ORDER_BY_NAME, ORDER_BY_ATTACK } from "../actions/actionTypes"
 
 const getAllPokemons = () => {
     return async (dispatch) => {
@@ -61,4 +61,4 @@ const clearOrder = () => {
 };
 
 
-export { clearOrder, clearDetail, filterAll, getAllPokemons, getAllTypes, getPokemonById, getPokemonByName, orderByName, orderByAttack }
+export { clearOrder, clearDetail, filterAll, getAllPokemons, getAllTypes, getPokemonById, getPokemonByName, orderByName, orderByAttack };

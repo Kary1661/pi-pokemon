@@ -34,3 +34,16 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+.btnClose{
+    margin: 20px;
+    background-color: #f8f8f88f;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333333;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    &:hover{
+        color: #f8f8f8;
+    }
+}

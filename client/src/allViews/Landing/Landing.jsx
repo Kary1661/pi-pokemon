@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import styles from "./Landing.module.css"
-import pokeball from "../../assets/pokeball.png"
+import styles from "../Landing/Landing.module.css"
+import Pokeball from "../../assets/Pokeball.jpg"
 
 const Landing = () => {
     return(
@@ -8,7 +8,7 @@ const Landing = () => {
             <div className={styles.container}>
             <div className={styles.pokeballContainer}>
                 <div className={styles.pokeball}>
-                <NavLink to="/home"><img src={pokeball} alt="Pokebola"/></NavLink>
+                <NavLink to="/home"><img src={Pokeball} alt="Pokeball"/></NavLink>
                  </div>
             </div>
             <h1>Catch all Pokemons!</h1>
