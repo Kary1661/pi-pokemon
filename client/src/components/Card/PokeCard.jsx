@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import style from "./PokeCard.module.css";
-import types from "../Card/types.module.css"
+import types from "./types.module.css"
 
 const PokeCard = (props) => {
     let color = props.types[0];
