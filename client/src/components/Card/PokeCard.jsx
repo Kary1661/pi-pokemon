@@ -1,22 +1,25 @@
 import { NavLink } from "react-router-dom";
 import style from "./PokeCard.module.css";
-
+import types from "../Card/types.module.css"
 
 const PokeCard = (props) => {
+    let color = props.types[0];
+    if(props.types.length > 1 && color === "normal") color = props.types[1];
     return (
-        <div className={style.card}>
-        <NavLink to={`/pokemon/${props.pokemon.id}`}>
-            <img src={props.pokemon.image} alt="pokemon" />
+        <div key={props.id} className={style.card}>
+        <div className={`${style.header} ${types[color]}`}></div>
+        <NavLink to={`/pokemon/${props.id}`}>
+            <img src={props.image} alt="pokemon" />
         </NavLink>
         <div className={style.container}>
-            <h4>
-            <b>{props.pokemon.name}</b>
-            </h4>
-            <p>
-            {props.pokemon.types.map((type) => (
-                <span className={style.types}>{type.name}</span>
-            ))}
-            </p>
+            <h2>
+            <b>{props.name}</b>
+            </h2>
+            <div>
+            {props.types.map((type, index) => {
+                return <div className={`${types[color]} ${style.type}`} key={index}>{type}</div>
+            })}
+            </div>
         </div>
         </div>
     );   
