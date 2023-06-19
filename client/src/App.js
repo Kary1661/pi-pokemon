@@ -1,9 +1,5 @@
 import './App.css';
-import Home from './allViews/Home/Home'
-import Landing from './allViews/Landing/Landing'
-import Form from './allViews/CreateForm/Form'
-import Detail from './allViews/PokeDetail/Detail'
-import NotFound from './allViews/NotFound/NotFound'
+import { Home, Landing, Form, Detail, NotFound } from "./allViews";
 import { Route, Routes } from "react-router-dom";
 
 
