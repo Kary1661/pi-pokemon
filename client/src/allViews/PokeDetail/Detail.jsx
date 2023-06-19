@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {NavLink, useParams} from "react-router-dom";
-import { getPokemonById } from "../../Redux/allActions/actions";
-import { clearDetail } from "../../Redux/allActions/actions";
+import { getPokemonById } from "../../Redux/actions";
+import { clearDetail } from "../../Redux/actions";
 import style from "../PokeDetail/Detail.module.css";
 
 

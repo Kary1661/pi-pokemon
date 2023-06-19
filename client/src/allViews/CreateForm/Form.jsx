@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import validate from "./validate";
-import { getAllTypes } from "../../Redux/allActions/actions";
+import { getAllTypes } from "../../Redux/actions";
 import {NavLink} from "react-router-dom";
 import style from "./Form.module.css";
 
