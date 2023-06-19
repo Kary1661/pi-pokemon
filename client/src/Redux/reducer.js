@@ -1,5 +1,3 @@
-import { CLEAR_ORDER, CLEAR_DETAIL, FILTER_ALL, GET_ALL_POKEMONS, GET_ALL_TYPES, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, ORDER_BY_NAME, ORDER_BY_ATTACK} from "./allActions/actionTypes";
-
 const initialState = {
     pokemonsGlobal: [],
     types: [],
@@ -11,20 +9,20 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         
-        case GET_ALL_POKEMONS:
+        case "GET_ALL_POKEMONS":
             return {...state, pokemonsGlobal: action.payload};
 
-        case GET_ALL_TYPES:
+        case "GET_ALL_TYPES":
             return {...state, types: action.payload};
 
-        case GET_POKEMON_BY_ID:
+        case "GET_POKEMON_BY_ID":
           console.log(action.payload)
             return {...state, selectedPokemon: action.payload};
 
-        case GET_POKEMON_BY_NAME:
+        case "GET_POKEMON_BY_NAME":
             return {...state, filteredPokemons: action.payload};
 
-            case FILTER_ALL:
+            case "FILTER_ALL":
               let allPokemons = typeof state.orderedPokemons !== "string" && state.orderedPokemons.length ? [...state.orderedPokemons] : [...state.pokemonsGlobal]
               let filteredByType = allPokemons.filter(pokemon => pokemon.types.includes(action.payload.type))
 
@@ -55,7 +53,7 @@ const reducer = (state = initialState, action) => {
                 return {...state, filteredPokemons: filteredBySource}
               }
 
-          case ORDER_BY_NAME:
+          case "ORDER_BY_NAME":
             let allPokemonsNames = [...state.pokemonsGlobal];
             if(typeof state.filteredPokemons === "string"){
               return {...state, orderedPokemons: "error"}
@@ -90,7 +88,7 @@ const reducer = (state = initialState, action) => {
              }
              break;
 
-            case ORDER_BY_ATTACK:
+            case "ORDER_BY_ATTACK":
               let allPokemonsAttack = [...state.pokemonsGlobal];
 
               if(typeof state.filteredPokemons === "string"){
@@ -125,10 +123,10 @@ const reducer = (state = initialState, action) => {
              }
              break;
              
-            case CLEAR_DETAIL:
+            case "CLEAR_DETAIL":
               return {...state, selectedPokemon: null}
 
-            case CLEAR_ORDER:
+            case "CLEAR_ORDER":
               return {...state, orderedPokemons: [...state.pokemonsGlobal]}
 
         default: return {...state};
