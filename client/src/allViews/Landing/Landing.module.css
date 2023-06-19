@@ -1,7 +1,7 @@
 .background{
     margin: 0;
     padding: 0;
-    background-image: url("/pi-pokemon/client/src/assets/pokemonsBack.jpg");
+    background-image: url("/pi-pokemon/client/src/allViews/assets/pokemonsBack.jpg");
     height: 100vh;
     overflow: hidden;
     width: 100%;
