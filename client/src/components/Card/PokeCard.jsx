@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import style from "./PokeCard.module.css";
 
+
 const PokeCard = (props) => {
     return (
         <div className={style.card}>
