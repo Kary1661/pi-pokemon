@@ -1,11 +1,11 @@
-import './App.css';
+// import './App.css';
 import { Home, Landing, Form, Detail, NotFound } from "./allViews";
 import { Route, Routes } from "react-router-dom";
 
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <Routes>
         <Route path='/' element={<Landing/>} />
         <Route path='/home' element={<Home/>} />
