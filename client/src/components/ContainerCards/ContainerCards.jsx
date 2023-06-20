@@ -18,19 +18,21 @@ const ContainerCards = () => {
     const location = useLocation();
 
     useEffect(() => {
-        setCurrentPokemons(pokemons.slice(0, pokemonsPerPage));
+        setCurrentPokemons(pokemons);
         setLoading(false);
-    }, [pokemons, pokemonsPerPage]);
+    }, [pokemons]);
 
     useEffect(() => {
-        setCurrentPokemons(orderedPokemons.slice(0, pokemonsPerPage));
+        setCurrentPokemons(orderedPokemons);
+        setCurrentPage(1);
         setLoading(false);
-    }, [orderedPokemons, pokemonsPerPage]);
+    }, [orderedPokemons]);
 
     useEffect(() => {
-        setCurrentPokemons(filteredPokemons.slice(0, pokemonsPerPage));
+        setCurrentPokemons(filteredPokemons);
+        setCurrentPage(1);
         setLoading(false);
-    }, [filteredPokemons, pokemonsPerPage]);
+    }, [filteredPokemons]);
 
 
     if (loading || !currentPokemons) {

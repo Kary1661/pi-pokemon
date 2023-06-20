@@ -8,9 +8,9 @@ const Filters = () => {
      
     const [filters, setFilters] = useState({
         name: '',
-        type: '',
+        type: 'all',
         attack: '',
-        source: ''
+        source: 'all'
     });
 
     const dispatch = useDispatch();
@@ -25,15 +25,15 @@ const Filters = () => {
         const prop = e.target.name;
         const value = e.target.value;
         setFilters({...filters, [prop]: value});
-    }
-
+    
     if(prop === 'type') {
         dispatch(filterAll(value, filters.source));
     }
     if(prop === 'source') {
         dispatch(filterAll(filters.type, value));
     }
-
+    }
+    
     const handelNameOrder = (e) => {
         const prop = e.target.name;
         const value = e.target.value;
