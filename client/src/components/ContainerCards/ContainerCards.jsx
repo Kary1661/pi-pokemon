@@ -7,14 +7,6 @@ import Filters from "../Filters/Filters";
 import bigpikachu from "../../assets/bigpikachu.jpg";
 
 
-import PokeCard from "../Card/PokeCard";
-import style from "./ContainerCards.module.css";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import Filters from "../Filters/Filters";
-import bigpikachu from "../../assets/bigpikachu.jpg";
-import { useLocation } from "react-router-dom";
-
 const ContainerCards = () => {
     const pokemons = useSelector((state) => state.pokemons);
     const [currentPage, setCurrentPage] = useState(1);
