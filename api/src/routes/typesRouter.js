@@ -1,7 +1,8 @@
 const express = require('express');
-const {allPokeType} = require('../controllers/pokemonType')
+const typesHandel = require('../handels/typesHandel')
+
 const typesRouter = express.Router();
 
-typesRouter.get('/types', allPokeType)
+typesRouter.get('/', typesHandel);
 
 module.exports = typesRouter;

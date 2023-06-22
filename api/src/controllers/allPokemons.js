@@ -3,6 +3,7 @@ const getApiData = require('./getApiData.js');
 const {Type} = require('../db.js');
 
 const allPokemons = async () => {
+    //API
     const apiPokemons = await getApiData();
   
     //DB

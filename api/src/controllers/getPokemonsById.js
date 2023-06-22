@@ -20,7 +20,7 @@ const getPokemonsById = async (id, source) => {
         }
         return pokemonApi;
     }else{
-        const dbPokemonsRaw = await Pokemon.findAll({
+        const dbPokemonsPure = await Pokemon.findAll({
             where: { id: id },
             include: {
                 model: Type,
@@ -28,7 +28,7 @@ const getPokemonsById = async (id, source) => {
                 attributes: ["name"],
             }
         });
-        const dbPokemon = dbPokemonsRaw[0].dataValues; 
+        const dbPokemon = dbPokemonsPure[0].dataValues; 
         const types = dbPokemon.types.map(type => type.name);
         dbPokemon.types = types;
         return dbPokemon

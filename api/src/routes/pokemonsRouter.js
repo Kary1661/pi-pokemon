@@ -1,15 +1,16 @@
-const express = require('express');
-const {allPokemons} = require('../controllers/allPokemons');
-const {getPokemonsById} = require('../controllers/getPokemonsById');
-const {createPokemon} = require('../controllers/createPokemon');
-const {getPokemonsByName} = require('../controllers/getPokemonsByName');
+const {Router} = require('express');
+const pokemonHandel = require('../handels/pokemonHandel');
+const pokemonHandelById = require('../handels/pokemonHandelById');
+const postPokemonHandel = require('../handels/postPokemonHandel');
+const {validate} = require('../middlewares');
 
-const pokemonsRouter = express.Router();
 
-pokemonsRouter.get('/pokemons', allPokemons);
-pokemonsRouter.get('/pokemons/:idPokemon', getPokemonsById);
-pokemonsRouter.post('/', createPokemon);
-pokemonsRouter.get('/pokemons/name?="..."', getPokemonsByName);
+
+const pokemonsRouter = Router();
+
+pokemonsRouter.get('/', pokemonHandel);
+pokemonsRouter.get('/:id', pokemonHandelById);
+pokemonsRouter.post('/', validate, postPokemonHandel);
 
 
 module.exports = pokemonsRouter;

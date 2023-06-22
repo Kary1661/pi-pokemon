@@ -4,9 +4,10 @@ const axios = require('axios');
 
 const typesByDb = async () => {
     const typesDb = await Type.findAll()
+    
     if (!typesDb.length){
         try {
-            const typesAPI = await getTypesApi();
+            const typesAPI = await typesByApi();
             const types = typesAPI.map((t) => ({name: t.name}));
             await Type.bulkCreate(types);
             return types
@@ -17,4 +18,4 @@ const typesByDb = async () => {
     return typesDb;
 }
 
-module.exports = {typesByDb};
+module.exports = typesByDb;

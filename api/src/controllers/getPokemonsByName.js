@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Sequelize, Op } = require('sequelize');
+const { Sequelize, Op } = require("sequelize");
 const { Pokemon, Type } = require("../db");
 
 const URL = "https://pokeapi.co/api/v2/pokemon";
@@ -10,21 +10,21 @@ const getPokemonsByName = async (name) => {
   const dbPokemonsPure = await Pokemon.findAll({
     where: {
       name: {
-        [Op.iLike]: name
-      }
+        [Op.iLike]: name,
+      },
     },
     include: {
       model: Type,
       through: {
-        attributes: []
+        attributes: [],
       },
-      attributes: ["name"]
-    }
+      attributes: ["name"],
+    },
   });
 
   if (dbPokemonsPure.length) {
     const dbPokemon = dbPokemonsPure[0].dataValues;
-    const types = dbPokemon.types.map(type => type.name);
+    const types = dbPokemon.types.map((type) => type.name);
     dbPokemon.types = types;
     pokemon.push(dbPokemon);
     return pokemon;
@@ -32,7 +32,7 @@ const getPokemonsByName = async (name) => {
 
   const newName = name.toLowerCase();
 
-  const { data } = (await axios(`${URL}/${newName}`)).data;
+  const data = (await axios(`${URL}/${newName}`)).data;
   const apiPokemon = {
     id: data.id,
     name: data.name,
@@ -43,11 +43,11 @@ const getPokemonsByName = async (name) => {
     speed: data.stats[5].base_stat,
     height: data.height,
     weight: data.weight,
-    types: data.types.map(t => t.type.name),
+    types: data.types.map((t) => t.type.name),
   };
 
   pokemon.push(apiPokemon);
   return pokemon;
 };
 
-module.exports = {getPokemonsByName};
+module.exports = { getPokemonsByName };
