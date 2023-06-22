@@ -2,25 +2,30 @@
     margin: 0;
     padding: 0;
     background-image: url("C:\PI\pi-pokemon\client\src\assets\pokemonsBack.jpg"); 
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 100vh;
-    background-position: center;
-    width: 100%;
+    width: 100vw;
+    overflow: hidden;
 }
 .container{
     display: flex;
     flex-direction: column;
-    width: 100%;
-}
-.pokeballContainer{
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
+}
+.pokeContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .pokeball{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 20%;
+    position: relative;
     transition: transform 0.2s ease-in-out;
+}
+.pokeball:hover{
+    transform: scale(1.1);
 }
