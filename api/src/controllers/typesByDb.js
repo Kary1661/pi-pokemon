@@ -1,5 +1,5 @@
 const { Type, Pokemon } = require('../db.js');
-import typesByApi from './typesByApi.js';
+const typesByApi = require('../controllers/typesByApi.js');
 const axios = require('axios');
 
 const typesByDb = async () => {
