@@ -4,7 +4,6 @@ export const getAllPokemons = () => {
     return async (dispatch) => {
         const apiData = await axios("/pokemons");
         const pokemons = apiData.data;
-        
         dispatch({type: "GET_ALL_POKEMONS", payload: pokemons})
     }
 }
@@ -13,7 +12,6 @@ export const getAllTypes = () => {
     return async (dispatch) => {
         const apiData = await axios("/types");
         const types = apiData.data;
-        
         dispatch({type: "GET_ALL_TYPES", payload: types})
     }
 }
@@ -30,8 +28,7 @@ export const getPokemonByName = (name) => {
     return async (dispatch) =>{
         try {
             const apiData = await axios(`/pokemons?name=${name}`);
-            const pokemon = apiData.data
-
+            const pokemon = apiData.data 
             dispatch({type: "GET_POKEMON_BY_NAME", payload: pokemon})
         } catch (error) {
             dispatch({type: "GET_POKEMON_BY_NAME", payload: error.message})

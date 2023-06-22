@@ -41,16 +41,16 @@ const Form = () => {
     });
 
     const handleInputChange = (e) => {
-        const aux = e.target.name;
+        const property = e.target.name;
         const value = e.target.value;
         
         setInput({
             ...input,
-            [aux]: value
+            [property]: value
         })
         setErrors(validate({
             ...input,
-            [aux]: value
+            [property]: value
         }))
     }
 
@@ -92,7 +92,7 @@ const Form = () => {
         let filteredTypes = input.types.filter(type => type !== typeName);
         setInput({
             ...input,
-            types: filteredTypes
+            types: [...filteredTypes]
         })
         setErrors(validate({
             ...input,
@@ -102,6 +102,7 @@ const Form = () => {
     const getTypeName = (typeId) => {
         const filteredTypes = types.filter(type => type.id === Number(typeId));
         let name = filteredTypes[0].name;
+        console.log(filteredTypes);
         return name;
     }
 
@@ -113,12 +114,16 @@ const Form = () => {
             <h1>Create your own Pokemon!</h1>
             <div>
                     <label>Image: </label>
-                    <input type="text" name="image" value={input.image} onChange={handleInputChange} />
+                    <input
+                     placeholder="Url from image..."
+                     type="text" name="image" value={input.image} onChange={handleInputChange} />
                     {errors.image && (<p className={style.danger}>{errors.image}</p>)}
                 </div>
                 <div>
                     <label>Name: </label>
-                    <input type="text" name="name" value={input.name} onChange={handleInputChange} />
+                    <input
+                    placeholder="Name your Pokemon..." 
+                    type="text" name="name" value={input.name} onChange={handleInputChange} />
                     {errors.name && (<p className={style.danger}>{errors.name}</p>)}
                 </div>
                 <div>
@@ -154,23 +159,30 @@ const Form = () => {
                 
                 <div>
                     <label>Types: </label>
-                    <select name="types" onChange={handleTypesChange}>
-                        <option value="">Select a type</option>
-                        {types.map(type => (
-                            <option key={type.id} value={type.id}>{type.name}</option>
+                    <select
+                    id="types" 
+                    name="types" onChange={handleTypesChange}>
+                        <option value="">Select type between 1 to 3</option>
+                        {types?.map(type => (
+                            <option 
+                            key={type?.id}
+                            name={type?.name}
+                            value={type?.id}>{type?.name}</option>
                         ))}
                     </select>
-                    {errors.types && (<p className={style.danger}>{errors.types}</p>)}
-                    <div className={style.container2}>
-                        {input.types.map(type => (
-                            <div key={type} className={style.types}>
-                                <p>{getTypeName(type)}</p>
+                    <br/>
+        <div className={style.typeRender}>
+         {Form?.types?.map((type, index) => (
+          <div key={index}>
+            <span className={style.typeSelected}>{getTypeName(type)}</span>
                                 <button className={style.btnClose} type="button" onClick={() => onClose(type)}>X</button>
                             </div>
                         ))}
                     </div>
+                    <span className={style.danger}>{errors?.types}</span>
                 </div>
-                <button type="submit">Create Pokemon</button>
+                <br/>
+                <button type="submit">Pokemon ready!</button>
             </form>
            </div>
         </div>
