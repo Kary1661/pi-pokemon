@@ -32,7 +32,7 @@ const getPokemonsByName = async (name) => {
 
   const newName = name.toLowerCase();
 
-  const { data } = await axios(`${URL}/${newName}`);
+  const { data } = (await axios(`${URL}/${newName}`)).data;
   const apiPokemon = {
     id: data.id,
     name: data.name,

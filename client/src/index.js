@@ -1,21 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './Redux/store';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./Redux/store";
+import axios from "axios";
 
+const instance = axios.create({
+  baseURL: "http://localhost:3001",
+});
 
 ReactDOM.render(
-  <React.StrictMode>
   <Provider store={store}>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
+    ,
+  </Provider>,
+  document.getElementById("root")
 );
-
-
