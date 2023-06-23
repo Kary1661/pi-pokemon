@@ -4,7 +4,7 @@ const {Pokemon, Type} = require('../db.js');
 const getPokemonsById = async (id, source) => {
     let pokemonApi = {}
     if(source === "api"){
-        data = (await axios(`https://pokeapi.co/api/v2/pokemon/${id}`)).data
+        const {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
         pokemonApi = {
             id: data.id,
             name: data.name,

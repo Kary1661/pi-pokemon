@@ -1,121 +1,74 @@
 import { useEffect, useState } from "react";
-import { clearOrder, filterAll, getAllTypes, orderByName, orderByAttack } from "../../Redux/actions";
+import { clearOrder, getAllTypes, orderByName, orderByAttack, createPokemon } from "../../Redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import style from './Filters.module.css';
 
 
-const Filters = () => {
+const Filters = ({ setCurrentPage }) => {
      
-    const [filters, setFilters] = useState({
-        name: '',
-        type: 'all',
-        attack: '',
-        source: 'all'
-    });
-
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getAllTypes());
-    }, [dispatch]);
-
-    const types = useSelector(state => state.types);
-
-    const handelFilterChange = (e) => { 
-        const prop = e.target.name;
-        const value = e.target.value;
-        setFilters({...filters, [prop]: value});
+    const pokemons = useSelector(state => state.pokemons);
     
-    if(prop === 'type') {
-        dispatch(filterAll(value, filters.source));
+    const handelClear = () => {
+        dispatch(clearOrder());
+        setCurrentPage(0)
     }
-    if(prop === 'source') {
-        dispatch(filterAll(filters.type, value));
-    }
+
+    const handelTypes = (e) => { 
+        dispatch(getAllTypes(e.target.value));
     }
     
     const handelNameOrder = (e) => {
-        const prop = e.target.name;
-        const value = e.target.value;
-
-        setFilters({...filters, [prop]: value,
-         name: ''
-    });
-      dispatch(orderByName(value));
+        dispatch(orderByName(e.target.value));
+        setCurrentPage(0)
     }
 
     const handelAttackOrder = (e) => {
-        const prop = e.target.name;
-        const value = e.target.value;
-
-        setFilters({...filters, [prop]: value,
-         attack: ''
-    });
-      dispatch(orderByAttack(value));
+        dispatch(orderByAttack(e.target.value));
+        setCurrentPage(0)
     }
 
-    const handelClear = () => {
-        setFilters({
-            name: '',
-            type: '',
-            attack: '',
-            source: ''
-        });
-        dispatch(clearOrder());
-        dispatch(filterAll('', ''));
+    const handelCreate = (e) => {
+        dispatch(createPokemon(e.target.value));
+        setCurrentPage(0)
     }
 
+    
     return (
         <div className={style.container}>
-            <div>
-                <label >Filter by type: </label>
-                <select
-                 id='type'
-                 name='type' value={filters.type} onChange={handelFilterChange}>
-                    <option 
-                     value=''>All</option>
-                    {types.map((type, index) => (
-                        <option key={index} value={type.name}>{type.name}</option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <label>Filter by source: </label>
-                <select
-                    id='source'
-                    name='source' value={filters.source} onChange={handelFilterChange}>
-                    <option value=''>All</option>
-                    <option value='api'>Api</option>
-                    <option value='db'>Db</option>
-                </select>
-            </div>
-            <div>
-                <label>Order by name: </label>
-                <select
-                    id='name'
-                    name='name' value={filters.name} onChange={handelNameOrder}>
-                    <option value=''>None</option>
-                    <option value='asc'>A-Z</option>
-                    <option value='desc'>Z-A</option>
-                </select>
-            </div>
-            <div>
-                <label>Order by attack: </label>
-                <select
-                    id='attack'
-                    name='attack' value={filters.attack} onChange={handelAttackOrder}>
-                    <option value=''>None</option>
-                    <option value='asc'>Lowest</option>
-                    <option value='desc'>Highest</option>
-                </select>
-            </div>
-            <div>
-                <button className={style.button} onClick={handelClear}>Clear</button>
-            </div>
-        </div>
+        <button onClick={handelClear} className={style.filterButton} >Clear filters</button>
+        <select onChange={handelAttackOrder} className={style.filterButton}>
+            <option disabled selected>order pokemons</option>
+            <option value="asc">ascendente</option>
+            <option value="des">descendente</option>
+        </select>
+        <select onChange={handelNameOrder} className={style.filterButton}>
+            <option disabled selected>order by name</option>
+            <option value="asc">A-Z</option>
+            <option value="des">Z-A</option>
+        </select>
+        <select onChange={handelCreate}  className={style.filterButton} >
+            <option value="all">All pokemons</option>
+            <option value="api">Existing pokemons</option>
+            <option value="created">Created pokemons</option>
+        </select>
+        <select  onChange={handelTypes} className={style.filterButton}>
+            <option value="all">Select one Poke-Type </option>
+            <option value="fire">Fire</option>
+            <option value="normal">Normal</option>
+            <option value="ground">Ground</option>
+            <option value="fairy">Fairy</option>
+            <option value="electric">Electric</option>
+            <option value="grass">Grass</option>
+            <option value="poison">Poison</option>
+            <option value="flying">Flying</option>
+            <option value="water">Water</option>
+            <option value="bug">Bug</option>
+        </select>
+    </div>
+
     );
 }
-
 export default Filters;
 
 

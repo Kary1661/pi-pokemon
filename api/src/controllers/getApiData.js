@@ -4,8 +4,7 @@ const getPokemonsById = require("../controllers/getPokemonsById");
 const getApiData = async (pokemons = []) => {
   try {
     const pokemonPromises = Array.from({ length: 200 }, (_, i) =>
-      getPokemonsById(i + 1, "api")
-    );
+      getPokemonsById(i + 1, "api"));
     const resolvedPromises = await Promise.all(pokemonPromises);
     pokemons.push(...resolvedPromises);
     return pokemons;

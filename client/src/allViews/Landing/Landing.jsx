@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import style from "../Landing/Landing.module.css"
 import pokeLanding from "../../assets/pokeLanding.png"
 
+
 const Landing = () => {
     return(
         <div className={style.background}>

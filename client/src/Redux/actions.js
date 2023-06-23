@@ -2,37 +2,56 @@ import axios from "axios";
 
 export const getAllPokemons = () => {
     return async (dispatch) => {
-        const apiData = await axios("/pokemons");
-        const pokemons = apiData.data;
-        dispatch({type: "GET_ALL_POKEMONS", payload: pokemons})
+        
+        const pokemon = await axios.get("http://localhost:3001");
+        return dispatch
+        ({type: "GET_ALL_POKEMONS", payload: pokemon.data})
     }
 }
 
 export const getAllTypes = () => {
     return async (dispatch) => {
-        const apiData = await axios("/types");
-        const types = apiData.data;
-        dispatch({type: "GET_ALL_TYPES", payload: types})
+        try {
+        const byTypes = await axios.get("https://localhost:3001/types");
+        return dispatch
+        ({type: "GET_ALL_TYPES", payload: byTypes.data})
+    } catch (error) {
+        console.log(error)
     }
+   }
 }
 
 export const getPokemonById = (id) => {
     return async(dispatch) => {
-        const apiData = await axios(`/pokemons/${id}`);
-        const pokemon = apiData.data;
-        dispatch({type: "GET_POKEMON_BY_ID", payload: pokemon})
+        try {
+        const pokemonDetail = await axios.get("http://localhost:3001/pokemons/" + id);
+        return dispatch({
+            type: "GET_POKEMON_BY_ID", 
+            payload: pokemonDetail.data})
+    } catch (error) {
+    console.log("fail to load id")
     }
+   }
 }
 
 export const getPokemonByName = (name) => {
     return async (dispatch) =>{
         try {
-            const apiData = await axios(`/pokemons?name=${name}`);
-            const pokemon = apiData.data 
-            dispatch({type: "GET_POKEMON_BY_NAME", payload: pokemon})
+            const pokemonName= await axios.get("http://localhost:3001/pokemons/name?=" + name)
+            return dispatch({
+                type: "GET_POKEMON_BY_NAME", payload: pokemonName.data})
         } catch (error) {
-            dispatch({type: "GET_POKEMON_BY_NAME", payload: error.message})
+            console.log(error)
         }
+    }
+}
+
+export const createPokemon = (pokemon) => {
+    return async (dispatch) => {
+        let payload = await axios.post("http://localhost:3001/pokemons", pokemon)
+        return dispatch({
+            type: "CREATE_FILTER", 
+            payload})
     }
 }
 

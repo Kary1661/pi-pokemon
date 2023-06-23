@@ -1,6 +1,76 @@
-.containerCards {
+.container{
     display: grid;
-    gap: 47px;
-    grid-template-columns: 230px 230px 230px 230px;
-    grid-template-rows: auto;
+    flex-direction: row;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 2px;
+    
+    grid-template-columns: repeat(4, 25%);
+    justify-content: center;
+    margin-bottom: 10px;
+    
+}
+.card{
+    border: 5px solid rgb(52, 101, 175);
+    height: fit-content;
+    width: 240px;
+    margin-top: 15px;
+    text-decoration: none;
+    
+}
+.loading{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.link{
+    text-decoration: none;
+    width: 200;
+    height: 200;
+    
+}
+
+.loadingContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navBar{
+    
+    background-color: salmon;
+    display: flex;
+    justify-content: space-around;
+    height: 5rem;
+    align-items: center;
+}
+.filter{
+    display: flex;
+    gap: 1rem;
+}
+.createPokemon{
+    border: 2px solid rgb(142, 52, 175);
+    background-color:rgba(255, 5, 255, 0.74);
+    color: rgb(253, 78, 78);
+    height: 2rem;
+    border-radius: 10px;
+}
+.handlePageButton{
+    border: 2px solid rgb(52, 101, 175);
+    background-color:rgba(5, 255, 134, 0.74);
+    color:  rgb(52, 101, 175);
+    border-radius: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+    height: 2rem;
+    width: 2rem;    
+}
+
+.handlePageContainer{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    justify-content: space-around;
+}
+.pokemonsCards{
+    display: flex;
+    justify-content: center;
 }

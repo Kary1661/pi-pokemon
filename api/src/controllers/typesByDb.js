@@ -1,6 +1,6 @@
 const { Type, Pokemon } = require('../db.js');
 const typesByApi = require('../controllers/typesByApi.js');
-const axios = require('axios');
+
 
 const typesByDb = async () => {
     const typesDb = await Type.findAll()
